@@ -1,7 +1,7 @@
 package arrays;
 
-public class MaximumSubArray {
-// https://leetcode.com/problems/maximum-subarray/
+public class MinimumSumSubArray {
+
     public static void main(String[] args) {
         int nums[]= {-2,1,-3,4,-1,2,1,-5,4};
         //int nums[]={5,-4,-2,6,-1};
@@ -11,30 +11,30 @@ public class MaximumSubArray {
 
     // Kadens algo
     private static int findtheSum(int[] nums) {
-        int bestSum=Integer.MIN_VALUE;
+        int bestSum=Integer.MAX_VALUE;
         int currentSum=0;
         for(int i=0;i<nums.length;i++){
             // we need compare the sum and the next element and consider which is better
-            currentSum=Math.max(nums[i],currentSum+nums[i]);
+            currentSum=Math.min(nums[i],currentSum+nums[i]);
             // update the bestSum with the value which we received as cuurentSUM
-            bestSum=Math.max(currentSum,bestSum);
+            bestSum=Math.min(currentSum,bestSum);
 
         }
         return bestSum;
     }
 
-// Run the array two times and calculate the sum of each subarray and find the Math.max of currentsum
+    // Run the array two times and calculate the sum of each subarray and find the Math.max of currentsum
     private static int findTheSumBruteForce(int[] nums) {
-        int maxSum=Integer.MIN_VALUE;
+        int minSum=Integer.MAX_VALUE;
         for (int i = 0; i < nums.length; i++) {
-        int currentSum=0;
-        for(int j=i;j<nums.length;j++){
-            // Calculate the sum at each point of time and later compare which is the max value
-            currentSum=currentSum+nums[j];
-            maxSum=Math.max(maxSum,currentSum);
-        }
+            int currentSum=0;
+            for(int j=i;j<nums.length;j++){
+                // Calculate the sum at each point of time and later compare which is the max value
+                currentSum=currentSum+nums[j];
+                minSum=Math.min(minSum,currentSum);
+            }
 
         }
-        return maxSum;
+        return minSum;
     }
 }

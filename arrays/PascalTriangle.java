@@ -20,6 +20,14 @@ public class PascalTriangle {
 //    3     2
 //    4     3
 //    5     4
+
+
+//             1 - row 1 - index -0
+//            1 1 -row 2 -index 1
+//            1 2 1 -row 3  -index 2
+//            1 3 3 1 - row 4 -index 3
+//            1 4 6 4 1 - row 5 -index 4
+//            1 5 10 10 5  1 - row 6 -index 5
     private static List<List<Integer>> drawTriangle(int numRows) {
         List<List<Integer>> ans = new ArrayList<>();
         for (int i = 1; i <= numRows; i++) {
