@@ -3,8 +3,8 @@ package arrays;
 // https://leetcode.com/problems/monotonic-array/solution/
 public class MonotonicArray {
     public static void main(String[] args) {
-        //int nums[]  ={1,2,3,4,5};
-        int[] nums ={ 6,6,5,4,3,2,2,1};
+        int nums[]  ={1,2,3,4,5};
+        //int[] nums ={ 6,6,5,4,3,2,2,1};
         boolean flag=isMonotonic(nums);
         System.out.println(flag);
     }
