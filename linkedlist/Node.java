@@ -1,15 +1,15 @@
 
 public class Node {
     int data;
-    private Node next;
+    Node next;
     int count;
 
     public Node(int data){
         count=0;
-        data = data;
+        this.data = data;
         next = null;
     }
-    private void add(int x ){
-        if(n)
-    }
+//    private void add(int x ){
+//        if(n)
+//    }
 }
