@@ -131,6 +131,27 @@ return head
 
 ![img_11.png](img_11.png)
 
+### Given a head of linked list delete the mid of the linked list 
+
+**Approach**
+Initialize the slow and fast pointers with head. 
+```java
+if(head.next==null){ // There is only 1 node in LL
+    return null
+}
+
+Node slow= head;
+Node fast= head;
+
+while(fast!=null && fast.next!=null){
+    slow=slow.next;
+    fast= fast.next.next;
+}
+slow.next= slow.next.next; // at this point we are at the middle of the linked list.
+        
+return head;
+```
+
 
 
 
