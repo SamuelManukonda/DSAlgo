@@ -134,6 +134,8 @@ return head
 ### Given a head of linked list delete the mid of the linked list 
 
 **Approach**
+
+![img_13.png](img_13.png)
 Initialize the slow and fast pointers with head. 
 ```java
 if(head.next==null){ // There is only 1 node in LL
@@ -150,12 +152,160 @@ while(fast!=null && fast.next!=null){
 slow.next= slow.next.next; // at this point we are at the middle of the linked list.
         
 return head;
+``` 
+
+### Given two sorted linked lists merge them to have a single sorted linked list.
+
+![img_14.png](img_14.png)
+
+**Expected Output**
+![img_15.png](img_15.png)
+
+
+### Idea
+Compare the data on each iteration and the traverse a temp variable across each linked list to form the merge of two lists
+
+
+The two pointers h1 and h2 are used to for comparing the value and the temp traverses across the linked list.
+
+![img_16.png](img_16.png)
+
+```java
+if(h1=null) return h2;
+if(h2=null) return h1;
+
+Node head, temp=null;
+
+if(h1.data<h2.data){
+    head=h1;
+    temp=h1;
+    h1=h1.next;
+}else{
+    head=h2;
+    temp=h2;
+    h2=h2.next;
+}
+
+while(h1!=null && h2!=null){
+    if(h1.data < h2.data){
+        temp.next=h1;
+        h1=h1.next;
+        temp=temp.next;
+    } else{
+        temp.next=h2;
+        h2=h2.next;
+        temp=temp.next;
+    }
+}
+if(h1!=null){ // at this point of time h2 is null or no other nodes available
+    temp.next=h1;
+}
+if(h2!=null){// at this point h1 is null and no other nodes in h1
+    temp.next=h2;
+}
+return head;
 ```
 
+### Rearrange a Linked list
 
 
+Question 
+Its kind of spiral 
+
+![img_18.png](img_18.png)
+
+_Idea_
+
+Find the mid of the linked list 
+
+![img_19.png](img_19.png)
+
+Reverse the 2nd half of the linkedlist
+![img_20.png](img_20.png)
+
+Now merge the linked lists.
+
+###03 Given a head node of Linkedlist check cycle detection
+
+![img_21.png](img_21.png)
+
+![img_22.png](img_22.png)
+
+_Optimised Solution_ 
 
 
+Create two pointers slow and fast and move slow by 1 and move fast by 2. If at any point of time both these pointers meet, then we can say that cycle is present in the linked list
+
+![img_23.png](img_23.png)
+
+````java
+if(head==null) return false; 
+
+Node slow=head;
+Node fast=head;
+
+while(fast!=null && fast.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
+        if(slow==fast){
+            return true;
+        }
+}
+return false;
+````
+
+On the similar node if you have to find the start **node** of the cycle, then you have to choose **head** as pointer P1 and cycle start as pointer P2 and move these one at a time. Once they meet that node is called the node of the **cycle start**
+![img_24.png](img_24.png)
+
+````java
+
+Node p1=detectCycle(head); // first check if cycle is present 
+Node start= getStartOfCycle(p1);
+// To remove the cycle in the linked list
+// removeCycle(start);
+
+
+private void removeCycle(Node start){
+    Node temp= start;
+    while(temp.next!=start){
+        temp=temp.next;
+    }
+    temp.next=null;
+}
+
+
+private Node getStartOfCycle(Node p1){
+    if(p1=null){
+        return null; // No cycle detected in the linked list
+    }    
+    Node p2= head;
+    while(p1!=p2){ // Once both p1 and p2 are at the same location
+        p1=p1.next;
+        p2=p2.next;
+    }
+    return p1; // Start of the cycle
+}
+
+
+private Node detectCycle(Node head){
+        if(head==null || head.next==null) return null;
+
+        Node slow=head;
+        Node fast=head;
+
+        while(fast!=null&&fast.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
+             if(slow==fast){
+              return slow; // you can return either slow or fast pointer here.
+             }
+        }
+        return null;
+}
+return false;
+````
+
+![img_25.png](img_25.png)
 
 
 
