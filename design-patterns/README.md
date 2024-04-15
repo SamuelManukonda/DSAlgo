@@ -49,4 +49,9 @@ The code should be open for extension/extensible and closed for modification.
 - but by adding new features, something should changed which is already written.
 
 Interference and Abstraction can help here.
+![img.png](img.png)
+---
+![img_2.png](img_2.png)
+
+![img_1.png](img_1.png)
 When solving this kind of problem, can sometimes lead to class explosion, we can solve that using Liskov's principle.
