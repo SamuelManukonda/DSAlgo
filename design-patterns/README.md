@@ -109,4 +109,37 @@ Based on functionality interfaces should be segregated.
 **D- Dependency Inversion**
 
 
+No 2 concrete class should directly depend on each other,they should depend on each other via an interface.
+
+
+![img_5.png](img_5.png)
+
+
+In the above example we have a problem. 
+The two concrete classes Pigeon, Sparrow and class PigeonSparrowFLyBehavior are tightly coupled. Any change in makeFly() function will cause issues. 
+Here Flyable is an interface.
+```java
+class Pigeon implements Flyable{
+
+@Override
+void fly(){
+  PegionSparrowFlyBehavior pad=new PegionSparrowFlyBehavior();
+  pad.makeFly();
+}
+}
+
+class PegionSparrowFlyBehavior{
+    void makeFly(){
+    //some behavior with flying
+}
+
+interface Flyable{
+       fly();
+}
+```
+
+![img_6.png](img_6.png)
+
+![img_7.png](img_7.png)
+
 
