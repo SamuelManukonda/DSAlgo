@@ -20,14 +20,13 @@ public class Client {
         fillRegistry(studentRegistry);
 
         Student s1=  studentRegistry.get("April Batch 2023");
-        // call the clone function when you get the prototype
         Student clonedStudent = s1.clone();
         clonedStudent.setName("Dave");
         clonedStudent.setAge(21);
         clonedStudent.setPsp(78);
         clonedStudent.setBatchName("April");
 
-        // call the clone function when you get the prototype
+
         Student intelligentStudent = studentRegistry.get("April Batch Intelligent").clone();
         intelligentStudent.setPsp(89);
         intelligentStudent.setName("Ajay");
