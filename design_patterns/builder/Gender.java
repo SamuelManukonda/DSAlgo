@@ -1,2 +1,6 @@
-package design_patterns.builder;public enum Gender {
+package design_patterns.builder;
+
+public enum Gender {
+
+    MALE,FEMALE
 }
