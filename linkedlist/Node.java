@@ -6,10 +6,21 @@ public class Node {
 
     public Node(int data){
         count=0;
-        data = data;
+        this.data = data;
         next = null;
     }
+    Node head = null;
+    Node tail = null;
     private void add(int x ){
-        if(n)
+       Node newNode= new Node(x);
+       if(head == null){
+           newNode=head;
+           newNode =tail;
+       }else {
+          tail.next=newNode;
+          tail =newNode;
+       }
     }
+
+    p
 }
