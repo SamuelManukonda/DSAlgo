@@ -1,3 +1,5 @@
+package DSAlgo.linkedlist;
+
 // A class to represent a node of a linked list
 class Node {
     int data; // the data stored in the node
