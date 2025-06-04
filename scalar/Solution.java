@@ -1,4 +1,4 @@
-package DSAlgo.scalar;
+package scalar;
 
 public class Solution {
     public static void main(String[] args) {

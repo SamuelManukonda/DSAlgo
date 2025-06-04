@@ -1,2 +1,4 @@
-package DynamicProgramming;public class SubsetEqualToSumK {
+package DynamicProgramming;
+
+public class SubsetEqualToSumK {
 }

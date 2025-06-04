@@ -1,4 +1,4 @@
-package DSAlgo.scalar;
+package scalar;
 
 import java.lang.*;
 import java.util.*;
