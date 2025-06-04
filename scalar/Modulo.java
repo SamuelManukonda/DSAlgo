@@ -1,4 +1,4 @@
-package scalar;
+package DSAlgo.scalar;
 
 public class Modulo {
 
