@@ -1,15 +1,18 @@
+/*
 package CompanyInterviewProblems;
 
 import java.util.HashMap;
 import java.util.Map;
 
+*/
 /*
 Given a list of words Words = ["baby", "cat", "dada", "dog"] and a random jumbled string like ctay,
 write a function find(words, word1) that returns the word if it can be formed from the characters of the given string.
  - Example:
  - find(words, "ctay") → returns "cat"
  - find(words, "dad") → returns "-" (not found)
- */
+ *//*
+
 public class CanWordBeFormed {
     public static void main(String[] args) {
         String[] words = {"baby", "cat", "dada", "dog"};
@@ -36,3 +39,4 @@ public class CanWordBeFormed {
 
     }
 }
+*/
