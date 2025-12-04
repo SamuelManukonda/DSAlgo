@@ -8,7 +8,7 @@ package rateLimiter;
 public class FixedWindowRateLimiter implements RateLimiter
 {
 	// Maximum number of requests allowed per window
-	int capacity;
+	int requestsAllowedPerWindow;
 	// Duration of each window in milliseconds
 	long windowSizeInMillis;
 	// Start time of the current window (in milliseconds)
@@ -19,12 +19,12 @@ public class FixedWindowRateLimiter implements RateLimiter
 	/**
 	 * Constructor to initialize the window size and capacity.
 	 * @param windowSizeInMillis Duration of each window in milliseconds
-	 * @param capacity Maximum number of requests allowed per window
+	 * @param requestsAllowedPerWindow Maximum number of requests allowed per window
 	 */
-	public FixedWindowRateLimiter(long windowSizeInMillis, int capacity)
+	public FixedWindowRateLimiter(long windowSizeInMillis, int requestsAllowedPerWindow)
 	{
 		this.windowSizeInMillis = windowSizeInMillis;
-		this.capacity = capacity;
+		this.requestsAllowedPerWindow = requestsAllowedPerWindow;
 		// Set the start time of the first window to the current time
 		this.windowStartTime = System.currentTimeMillis();
 	}
@@ -49,7 +49,7 @@ public class FixedWindowRateLimiter implements RateLimiter
 			requestCount = 0;
 		}
 		// If the request count is below capacity, allow the request
-		if (requestCount < capacity)
+		if (requestCount < requestsAllowedPerWindow)
 		{
 			requestCount++;
 			return true;
