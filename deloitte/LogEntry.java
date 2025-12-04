@@ -35,4 +35,10 @@ public class LogEntry {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString()
+    {
+        return "LogEntry{" + "jobId='" + jobId + '\'' + ", timestamp=" + timestamp + ", status='" + status + '\'' + '}';
+    }
 }
