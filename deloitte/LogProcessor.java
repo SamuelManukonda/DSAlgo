@@ -37,27 +37,34 @@ public class LogProcessor
 		);
 
 
+		// Shared window for sliding window logic (should be per job for correctness)
 		Deque<LogEntry> window = new LinkedList<>();
 
+		// List to store jobIds that meet the failure criteria
 		List<String> results = new ArrayList<>();
 
+		// Group log entries by jobId, filter only failures, and sort by timestamp
 		Map<String, List<LogEntry>> map = testData.stream()
 				.filter(it -> it.getStatus().equals("fail"))
 				.sorted(Comparator.comparingInt(LogEntry::getTimestamp))
 				.collect(Collectors.groupingBy(LogEntry::getJobId));
 
+		// For each job, check if there are more than 3 failures within the sliding window
 		map.entrySet().forEach(entry -> {
 			List<LogEntry> value = entry.getValue();
 			for (LogEntry logEntry : value)
 			{
 				String jobId = logEntry.getJobId();
-				window.addLast(logEntry);
+				window.addLast(logEntry); // Add current log entry to the window
 
+				// Remove log entries outside the sliding window (older than WINDOW_LENGTH seconds)
+				// If the first entry is older than current timestamp - WINDOW_LENGTH, remove it
 				while (window.peekFirst().getTimestamp() < (logEntry.getTimestamp() - WINDOW_LENGTH))
 				{
 					window.removeFirst();
 				}
 
+				// If window size exceeds 3, add jobId to results and stop checking further for this job
 				if (window.size() > 3)
 				{
 					results.add(jobId);
@@ -66,6 +73,7 @@ public class LogProcessor
 			}
 		});
 
+		// Print the jobIds that meet the criteria
 		System.out.println(results);
 	}
 }
